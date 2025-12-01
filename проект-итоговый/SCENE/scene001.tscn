@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbwk17xa1pkc3"]
+
+[ext_resource type="Texture2D" uid="uid://b3l4vu6t762s4" path="res://IMG/за шкилой.webp" id="1_b2ef2"]
+[ext_resource type="Script" uid="uid://0pt8b1mj6qe5" path="res://SCENE/main_back_btn.gd" id="2_5km0c"]
+[ext_resource type="Script" uid="uid://em1k5npebuhe" path="res://SCENE/ирл_город_ночь.gd" id="2_8j1yk"]
+[ext_resource type="FontFile" uid="uid://bqikkx1axc3ol" path="res://ДРУГОЕ/Zaychik/Zaychik-Regular.ttf" id="3_b2ef2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ИрлГородНочь" type="Sprite2D" parent="."]
+position = Vector2(962.99994, 534.00006)
+scale = Vector2(4.05997, 4.161597)
+texture = ExtResource("1_b2ef2")
+script = ExtResource("2_8j1yk")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="MainBackBtn" type="Button" parent="UI"]
+offset_left = 21.0
+offset_top = 16.0
+offset_right = 183.15
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("3_b2ef2")
+theme_override_font_sizes/font_size = 52
+text = "Выйти
+"
+script = ExtResource("2_5km0c")
+
+[connection signal="pressed" from="UI/MainBackBtn" to="UI/MainBackBtn" method="_on_pressed"]
