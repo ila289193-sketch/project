@@ -18,9 +18,13 @@ var is_typing: bool = false
 signal dialogue_ended
 
 func _ready() -> void:
+	# Добавляем в группу для легкого поиска
+	add_to_group("DialogueUI")
+	visible = false # Скрываем диалог при старте
+	
 	text_label.bbcode_enabled = true
 	text_label.scroll_following = true
-	text_label.autowrap_mode = TextServer.AUTOWRAP_WORD # перенос слов, чтобы текст не прятался за границы
+
 	text_label.add_theme_color_override("default_color", Color.WHITE) # делаем текст белым, чтобы он точно был виден
 	text_label.custom_minimum_size = Vector2(600, 140) # задаём минимальный размер области текста
 	text_label.visible = true # убеждаемся, что метка текста отображается
@@ -39,8 +43,7 @@ func show_next_line() -> void:
 		end_dialogue() # закрываем диалог
 		return # и выходим из функции
 
-	var entry = dialogues[current_index]  # Берём текущую строку (это словарь типа {"name": "...", "text": "..."})
-
+	var entry = dialogues[current_index] # Берём текущую строку диалога
 	name_label.text = entry["name"] # Пишем имя персонажа в поле имени
 	if entry.has("portrait"): # Если в этой строке есть портрет
 		portrait.texture = entry["portrait"] # ставим его картинку
@@ -55,15 +58,15 @@ func show_next_line() -> void:
 	tween = create_tween() # создаём анимацию набора текста
 	tween.tween_property(text_label, "visible_characters", total, duration) # показываем буквы по одной до конца строки
 	is_typing = true # запоминаем, что сейчас идёт печать
+
 # Функция, которая закрывает диалог
 func end_dialogue() -> void:
 	visible = false # Прячем окно
 	dialogue_ended.emit() # Говорим всем: «Диалог кончился!»
-	current_index = 0  # На всякий случай сбрасываем счётчик
 	
 # Эта функция вызывается каждый раз, когда игрок что-то нажимает
 func _input(event):
-	if not visible: # Если диалог скрыто не видно — ничего не делаем
+	if not visible: # Если диалог скрыт — ничего не делаем
 		return
 
 	if not event.is_action_pressed("ui_accept"):  # Если нажата НЕ пробел и НЕ Enter
@@ -75,8 +78,9 @@ func _input(event):
 		is_typing = false # Больше не печатаем
 	else:  # Если текст уже весь виден
 		if current_index + 1 >= dialogues.size():
-			return # на последней реплике пробел больше не закрывает диалог
+			# Если это была последняя реплика, то при следующем нажатии закрываем диалог и переключаем сцену
+			end_dialogue()
+			return 
 		current_index += 1 # Переходим к следующей реплике
 		show_next_line() # Показываем её
-
-	get_viewport().set_input_as_handled() # Говорим Godot: «Мы уже обработали нажатие, не передавай дальше»
+		get_viewport().set_input_as_handled() # Говорим Godot: «Мы уже обработали нажатие, не передавай дальше»

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://clw2frmg1k3yf"]
+[gd_scene load_steps=2 format=3 uid="uid://clw2frmg1k3yf"]
 
 [ext_resource type="Script" uid="uid://cfhonteoowij3" path="res://SCENE/dialogue.gd" id="1_o3jll"]
-[ext_resource type="FontFile" uid="uid://bqikkx1axc3ol" path="res://ДРУГОЕ/Zaychik/Zaychik-Regular.ttf" id="2_argqo"]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -10,34 +9,26 @@
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 148.0
-offset_top = 416.0
-offset_right = 948.0
-offset_bottom = 676.0
+offset_left = 410.0
+offset_top = 777.0
+offset_right = 1479.0
+offset_bottom = 1073.0
 script = ExtResource("1_o3jll")
-
-[node name="Portrait" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 194.0
-offset_top = -399.0
-offset_right = 314.0
-offset_bottom = -239.0
 
 [node name="NameLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 46.0
-offset_top = -2.0
+offset_top = -8.0
 offset_right = 386.0
-offset_bottom = 32.0
-theme_override_fonts/font = ExtResource("2_argqo")
-theme_override_font_sizes/font_size = 26
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 35
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 44.0
-offset_top = 37.0
-offset_right = 784.0
-offset_bottom = 205.0
+offset_top = 52.0
+offset_right = 1035.0714
+offset_bottom = 262.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
@@ -58,5 +49,4 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("2_argqo")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 30
