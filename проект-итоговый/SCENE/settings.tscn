@@ -1,36 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmuqudshi20hk"]
+[gd_scene load_steps=3 format=3 uid="uid://cmuqudshi20hk"]
 
-[ext_resource type="Texture2D" uid="uid://cefdxw3ulgvkm" path="res://IMG/глав.ул.деревня.webp" id="1_vrtkc"]
-[ext_resource type="FontFile" uid="uid://bqikkx1axc3ol" path="res://ДРУГОЕ/Zaychik/Zaychik-Regular.ttf" id="2_icyh1"]
+[ext_resource type="Texture2D" uid="uid://bt5422p1ml307" path="res://IMG/вселеная.webp" id="1_vrtkc"]
 [ext_resource type="Script" uid="uid://bm001masntb4e" path="res://SCENE/mainback_btn.gd" id="2_n2c5u"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 
 [node name="Глав_ул_деревня" type="Sprite2D" parent="."]
-position = Vector2(962.55554, 543)
-scale = Vector2(4.014815, 4.014815)
+position = Vector2(577.6666, 326.5)
+scale = Vector2(2.411111, 2.411111)
 texture = ExtResource("1_vrtkc")
 
-[node name="MainbackBtn" type="Button" parent="Глав_ул_деревня"]
-offset_left = -222.56458
-offset_top = 87.67528
-offset_right = -156.31458
-offset_bottom = 115.67528
-theme_override_fonts/font = ExtResource("2_icyh1")
-theme_override_font_sizes/font_size = 20
+[node name="MainbackBtn" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 478.0
+offset_right = 303.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 74
+text = "Выйти"
 script = ExtResource("2_n2c5u")
 
-[node name="Label" type="Label" parent="Глав_ул_деревня/MainbackBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_fonts/font = ExtResource("2_icyh1")
-text = "Меню"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="Глав_ул_деревня/MainbackBtn" to="Глав_ул_деревня/MainbackBtn" method="_on_pressed"]
+[connection signal="pressed" from="MainbackBtn" to="MainbackBtn" method="_on_pressed"]
